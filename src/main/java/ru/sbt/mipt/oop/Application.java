@@ -67,7 +67,7 @@ public class Application {
     }
 
     private static void sendCommand(SensorCommand command) {
-        System.out.println("Pretent we're sending command " + command);
+        System.out.println("Pretend we're sending command " + command);
     }
 
     private static SensorEvent getNextSensorEvent() {
