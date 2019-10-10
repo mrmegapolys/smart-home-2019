@@ -1,5 +1,8 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.devices.Door;
+import ru.sbt.mipt.oop.devices.Light;
+
 import java.util.Collection;
 
 public class Room {

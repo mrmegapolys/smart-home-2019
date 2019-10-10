@@ -1,7 +1,6 @@
 package ru.sbt.mipt.oop;
 
-import ru.sbt.mipt.oop.initialization.Reader;
-import ru.sbt.mipt.oop.initialization.SmartHomeCreator;
+import ru.sbt.mipt.oop.utils.Reader;
 
 public class Application {
 
@@ -12,7 +11,7 @@ public class Application {
             return;
         }
 
-        SmartHome smartHome = SmartHomeCreator.fromJson(encoded);
+        SmartHome smartHome = HomeBuilder.fromJson(encoded);
         EventFactory eventFactory = new EventFactory();
         Dispatcher dispatcher = new Dispatcher(smartHome, eventFactory);
         dispatcher.run();

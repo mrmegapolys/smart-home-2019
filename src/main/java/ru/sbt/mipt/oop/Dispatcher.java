@@ -1,5 +1,9 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.devices.Door;
+import ru.sbt.mipt.oop.devices.Light;
+import ru.sbt.mipt.oop.utils.Logger;
+
 import static ru.sbt.mipt.oop.SensorEventType.*;
 
 public class Dispatcher {

@@ -1,12 +1,12 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.devices;
 
 public class Door {
     private final String id;
     private boolean isOpen;
 
-    public Door(boolean isOpen, String id) {
-        this.isOpen = isOpen;
+    public Door(String id, boolean isOpen) {
         this.id = id;
+        this.isOpen = isOpen;
     }
 
     public String getId() {
@@ -16,4 +16,5 @@ public class Door {
     public void setOpen(boolean open) {
         isOpen = open;
     }
+
 }

@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.initialization;
+package ru.sbt.mipt.oop.utils;
 
 import java.io.IOException;
 import java.nio.file.Files;
