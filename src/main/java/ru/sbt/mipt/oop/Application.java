@@ -5,7 +5,9 @@ import ru.sbt.mipt.oop.utils.Reader;
 public class Application {
 
     public static void main(String... args) {
-        String encoded = Reader.readFile("smart-home-1.js");
+        final String FILEPATH = "smart-home-1.js";
+
+        String encoded = Reader.readFile(FILEPATH);
         if (encoded == null) {
             System.out.println("Smart home config not found.");
             return;
