@@ -1,5 +1,11 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.devices.SensorEvent;
+import ru.sbt.mipt.oop.devices.door.DoorActionType;
+import ru.sbt.mipt.oop.devices.door.DoorEvent;
+import ru.sbt.mipt.oop.devices.light.LightActionType;
+import ru.sbt.mipt.oop.devices.light.LightEvent;
+
 public class EventFactory {
     public EventFactory() {
         /* Since this factory is a dummy one, it has no context
@@ -10,10 +16,15 @@ public class EventFactory {
     }
 
     public SensorEvent getNextSensorEvent(){
-        // pretend like we're getting the events from physical world, but here we're going to just generate some random events
-        if (Math.random() < 0.05) return null; // null means end of event stream
-        SensorEventType sensorEventType = SensorEventType.values()[(int) (4 * Math.random())];
+        SensorEvent event;
+        if (Math.random() < 0.02) return null;
         String objectId = "" + ((int) (10 * Math.random()));
-        return new SensorEvent(sensorEventType, objectId);
+        int actionType = (int) (Math.random() * 2);
+        if ((int) (Math.random() * 2) == 0) {
+            event = new DoorEvent(objectId, DoorActionType.values()[actionType]);
+        } else {
+            event = new LightEvent(objectId, LightActionType.values()[actionType]);
+        }
+        return event;
     }
 }

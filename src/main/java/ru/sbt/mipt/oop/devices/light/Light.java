@@ -1,16 +1,13 @@
-package ru.sbt.mipt.oop.devices;
+package ru.sbt.mipt.oop.devices.light;
 
-public class Light {
-    private final String id;
+import ru.sbt.mipt.oop.devices.Device;
+
+public class Light extends Device {
     private boolean isOn;
 
     public Light(String id, boolean isOn) {
-        this.id = id;
+        super(id);
         this.isOn = isOn;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public void setOn(boolean on) {

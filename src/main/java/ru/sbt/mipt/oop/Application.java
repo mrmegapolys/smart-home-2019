@@ -17,6 +17,7 @@ public class Application {
         EventFactory eventFactory = new EventFactory();
         Dispatcher dispatcher = new Dispatcher(smartHome, eventFactory);
         dispatcher.run();
+
     }
 
 }

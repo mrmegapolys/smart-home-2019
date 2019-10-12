@@ -1,16 +1,13 @@
-package ru.sbt.mipt.oop.devices;
+package ru.sbt.mipt.oop.devices.door;
 
-public class Door {
-    private final String id;
+import ru.sbt.mipt.oop.devices.Device;
+
+public class Door extends Device {
     private boolean isOpen;
 
     public Door(String id, boolean isOpen) {
-        this.id = id;
+        super(id);
         this.isOpen = isOpen;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public void setOpen(boolean open) {
