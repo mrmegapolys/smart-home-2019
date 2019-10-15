@@ -10,6 +10,7 @@ import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.utils.Logger;
 
 public class SetDoorState implements EventProcessor {
+
     @Override
     public void process(SensorEvent event, SmartHome smartHome) {
         if (!(event instanceof DoorEvent)) return;
