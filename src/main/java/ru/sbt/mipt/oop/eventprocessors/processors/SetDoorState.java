@@ -7,10 +7,9 @@ import ru.sbt.mipt.oop.devices.door.Door;
 import ru.sbt.mipt.oop.devices.door.DoorActionType;
 import ru.sbt.mipt.oop.devices.door.DoorEvent;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
-import ru.sbt.mipt.oop.scenarios.LightScenarios;
 import ru.sbt.mipt.oop.utils.Logger;
 
-public class DoorEventProcessor implements EventProcessor {
+public class SetDoorState implements EventProcessor {
     @Override
     public void process(SensorEvent event, SmartHome smartHome) {
         if (!(event instanceof DoorEvent)) return;
@@ -28,10 +27,8 @@ public class DoorEventProcessor implements EventProcessor {
                     if (event.getActionType() == DoorActionType.CLOSE) {
                         door.setOpen(false);
                         Logger.info("Door " + door.getId() + " in room " + room.getName() + " was closed.");
-                        if (room.getName().equals("hall")) {
-                            LightScenarios.turnAllLightsOff(smartHome);
-                        }
                     }
+
                 }
             }
         }
