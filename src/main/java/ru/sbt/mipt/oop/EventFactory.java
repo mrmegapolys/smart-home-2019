@@ -7,13 +7,6 @@ import ru.sbt.mipt.oop.devices.light.LightActionType;
 import ru.sbt.mipt.oop.devices.light.LightEvent;
 
 public class EventFactory {
-    public EventFactory() {
-        /* Since this factory is a dummy one, it has no context
-        * and therefore this constructor is that easy.
-        * It still exists though, because the real one
-        * would likely need to store context.
-        */
-    }
 
     public SensorEvent getNextSensorEvent(){
         SensorEvent event;
