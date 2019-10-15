@@ -9,7 +9,7 @@ public class Application {
 
         String encoded = Reader.readFile(FILEPATH);
         if (encoded == null) {
-            System.out.println("Smart home config not found.");
+            System.out.println("Failed to read smart home config.");
             return;
         }
 
