@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.eventfactories;
 
 import ru.sbt.mipt.oop.devices.SensorEvent;
 import ru.sbt.mipt.oop.devices.door.DoorActionType;
@@ -6,7 +6,7 @@ import ru.sbt.mipt.oop.devices.door.DoorEvent;
 import ru.sbt.mipt.oop.devices.light.LightActionType;
 import ru.sbt.mipt.oop.devices.light.LightEvent;
 
-public class EventFactory {
+public class RandomEventFactory implements EventFactory {
 
     public SensorEvent getNextSensorEvent(){
         SensorEvent event;

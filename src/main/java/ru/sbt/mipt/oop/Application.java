@@ -1,5 +1,7 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.eventfactories.EventFactory;
+import ru.sbt.mipt.oop.eventfactories.RandomEventFactory;
 import ru.sbt.mipt.oop.utils.Reader;
 
 public class Application {
@@ -14,7 +16,7 @@ public class Application {
         }
 
         SmartHome smartHome = HomeBuilder.fromJson(encoded);
-        EventFactory eventFactory = new EventFactory();
+        EventFactory eventFactory = new RandomEventFactory();
         Dispatcher dispatcher = new Dispatcher(smartHome, eventFactory);
         dispatcher.run();
 
