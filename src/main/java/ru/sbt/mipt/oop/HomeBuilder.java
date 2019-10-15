@@ -1,20 +1,16 @@
 package ru.sbt.mipt.oop;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import ru.sbt.mipt.oop.devices.door.Door;
 import ru.sbt.mipt.oop.devices.light.Light;
+import ru.sbt.mipt.oop.utils.Writer;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class HomeBuilder {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        final String FILENAME = "output.js";
+
         Room kitchen = new Room(
                 Arrays.asList(new Light("1", false), new Light("2", true)),
                 Arrays.asList(new Door("1", false)),
@@ -36,18 +32,12 @@ public class HomeBuilder {
                 "hall"
         );
         SmartHome smartHome = new SmartHome(Arrays.asList(kitchen, bathroom, bedroom, hall));
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonString = gson.toJson(smartHome);
-        System.out.println(jsonString);
-        Path path = Paths.get("output.js");
-        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
-            writer.write(jsonString);
+        String encoded = SmartHomeSerializer.toJson(smartHome);
+        boolean writeSuccess = Writer.writeStringToFile(encoded, FILENAME);
+        if (!writeSuccess) {
+            System.out.println("Failed to write smart home config.");
         }
-    }
 
-    public static SmartHome fromJson(String encoded) {
-        Gson gson = new Gson();
-        return gson.fromJson(encoded, SmartHome.class);
     }
 
 }

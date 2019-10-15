@@ -15,7 +15,7 @@ public class Application {
             return;
         }
 
-        SmartHome smartHome = HomeBuilder.fromJson(encoded);
+        SmartHome smartHome = SmartHomeSerializer.fromJson(encoded);
         EventFactory eventFactory = new RandomEventFactory();
         Dispatcher dispatcher = new Dispatcher(smartHome, eventFactory);
         dispatcher.run();
