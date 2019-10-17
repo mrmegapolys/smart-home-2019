@@ -4,6 +4,7 @@ import ru.sbt.mipt.oop.devices.door.Door;
 import ru.sbt.mipt.oop.devices.light.Light;
 import ru.sbt.mipt.oop.utils.Writer;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class HomeBuilder {
@@ -33,8 +34,10 @@ public class HomeBuilder {
         );
         SmartHome smartHome = new SmartHome(Arrays.asList(kitchen, bathroom, bedroom, hall));
         String encoded = SmartHomeSerializer.toJson(smartHome);
-        boolean writeSuccess = Writer.writeStringToFile(encoded, FILENAME);
-        if (!writeSuccess) {
+
+        try {
+            Writer.writeStringToFile(encoded, FILENAME);
+        } catch (IOException e) {
             System.out.println("Failed to write smart home config.");
         }
 
