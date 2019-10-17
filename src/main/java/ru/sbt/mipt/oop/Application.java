@@ -2,20 +2,22 @@ package ru.sbt.mipt.oop;
 
 import ru.sbt.mipt.oop.eventfactories.EventFactory;
 import ru.sbt.mipt.oop.eventfactories.RandomEventFactory;
-import ru.sbt.mipt.oop.utils.Reader;
+
+import java.io.IOException;
 
 public class Application {
 
     public static void main(String... args) {
         String FILEPATH = "smart-home-1.js";
+        SmartHome smartHome;
 
-        String encoded = Reader.readFile(FILEPATH);
-        if (encoded == null) {
+        try {
+            smartHome = SmartHomeProvider.readFile(FILEPATH, "json");
+        } catch (IOException e) {
             System.out.println("Failed to read smart home config.");
             return;
         }
 
-        SmartHome smartHome = SmartHomeSerializer.fromJson(encoded);
         EventFactory eventFactory = new RandomEventFactory();
         Dispatcher dispatcher = new Dispatcher(eventFactory, smartHome);
         dispatcher.run();
