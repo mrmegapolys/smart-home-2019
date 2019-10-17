@@ -1,11 +1,11 @@
 package ru.sbt.mipt.oop.eventprocessors.processors;
 
 import ru.sbt.mipt.oop.Room;
+import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.SensorEventType;
 import ru.sbt.mipt.oop.SmartHome;
-import ru.sbt.mipt.oop.devices.SensorEvent;
 import ru.sbt.mipt.oop.devices.light.Light;
 import ru.sbt.mipt.oop.devices.light.LightActionType;
-import ru.sbt.mipt.oop.devices.light.LightEvent;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.utils.Logger;
 
@@ -18,7 +18,7 @@ public class SetLightState implements EventProcessor {
 
     @Override
     public void process(SensorEvent event) {
-        if (!(event instanceof LightEvent)) return;
+        if (event.getEventType() != SensorEventType.LIGHT_EVENT) return;
 
         for (Room room : smartHome.getRooms()) {
             for (Light light : room.getLights()) {
