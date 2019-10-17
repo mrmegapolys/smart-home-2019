@@ -1,6 +1,9 @@
 package ru.sbt.mipt.oop.smarthome.devices;
 
-public class Device {
+import ru.sbt.mipt.oop.smarthome.Action;
+import ru.sbt.mipt.oop.smarthome.Actionable;
+
+public class Device implements Actionable {
     private final String id;
 
     public Device(String id) {
@@ -9,5 +12,10 @@ public class Device {
 
     public String getId() {
         return id;
+    }
+
+    @Override
+    public void execute(Action action) {
+        action.run();
     }
 }
