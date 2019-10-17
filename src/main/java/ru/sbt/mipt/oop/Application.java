@@ -7,7 +7,7 @@ import ru.sbt.mipt.oop.utils.Reader;
 public class Application {
 
     public static void main(String... args) {
-        final String FILEPATH = "smart-home-1.js";
+        String FILEPATH = "smart-home-1.js";
 
         String encoded = Reader.readFile(FILEPATH);
         if (encoded == null) {
