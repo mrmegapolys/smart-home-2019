@@ -1,13 +1,13 @@
 package ru.sbt.mipt.oop.eventprocessors.processors;
 
-import ru.sbt.mipt.oop.Room;
+import ru.sbt.mipt.oop.Logger;
 import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.SensorEventType;
-import ru.sbt.mipt.oop.SmartHome;
 import ru.sbt.mipt.oop.devices.light.Light;
 import ru.sbt.mipt.oop.devices.light.LightActionType;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
-import ru.sbt.mipt.oop.utils.Logger;
+import ru.sbt.mipt.oop.smarthome.Room;
+import ru.sbt.mipt.oop.smarthome.SmartHome;
 
 public class SetLightState implements EventProcessor {
     private final SmartHome smartHome;

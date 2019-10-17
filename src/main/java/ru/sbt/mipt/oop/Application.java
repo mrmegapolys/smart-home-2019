@@ -6,6 +6,8 @@ import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.eventprocessors.processors.SetDoorState;
 import ru.sbt.mipt.oop.eventprocessors.processors.SetLightState;
 import ru.sbt.mipt.oop.eventprocessors.processors.TurnLightsOffAfterLeaving;
+import ru.sbt.mipt.oop.smarthome.SmartHome;
+import ru.sbt.mipt.oop.smarthome.SmartHomeProvider;
 
 import java.io.IOException;
 import java.util.ArrayList;

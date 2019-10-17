@@ -1,6 +1,4 @@
-package ru.sbt.mipt.oop.utils;
-
-import ru.sbt.mipt.oop.SensorEvent;
+package ru.sbt.mipt.oop;
 
 public class Logger {
     public static void newEvent(SensorEvent event) {

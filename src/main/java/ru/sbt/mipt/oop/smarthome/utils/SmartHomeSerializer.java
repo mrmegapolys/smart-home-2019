@@ -1,6 +1,7 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.smarthome.utils;
 
 import com.google.gson.Gson;
+import ru.sbt.mipt.oop.smarthome.SmartHome;
 
 public class SmartHomeSerializer {
     public static SmartHome fromJson(String encoded) {

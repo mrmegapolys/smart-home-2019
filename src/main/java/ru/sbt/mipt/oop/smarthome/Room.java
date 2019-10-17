@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.smarthome;
 
 import ru.sbt.mipt.oop.devices.door.Door;
 import ru.sbt.mipt.oop.devices.light.Light;

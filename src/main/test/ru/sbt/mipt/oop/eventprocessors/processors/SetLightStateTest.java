@@ -3,9 +3,9 @@ package ru.sbt.mipt.oop.eventprocessors.processors;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.sbt.mipt.oop.SmartHome;
-import ru.sbt.mipt.oop.SmartHomeProvider;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
+import ru.sbt.mipt.oop.smarthome.SmartHome;
+import ru.sbt.mipt.oop.smarthome.SmartHomeProvider;
 
 import java.io.IOException;
 

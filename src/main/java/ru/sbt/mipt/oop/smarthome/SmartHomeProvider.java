@@ -1,4 +1,6 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.smarthome;
+
+import ru.sbt.mipt.oop.smarthome.utils.SmartHomeSerializer;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
