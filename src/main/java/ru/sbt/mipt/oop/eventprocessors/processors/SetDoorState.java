@@ -10,9 +10,14 @@ import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.utils.Logger;
 
 public class SetDoorState implements EventProcessor {
+    private final SmartHome smartHome;
+
+    public SetDoorState(SmartHome smartHome) {
+        this.smartHome = smartHome;
+    }
 
     @Override
-    public void process(SensorEvent event, SmartHome smartHome) {
+    public void process(SensorEvent event) {
         if (!(event instanceof DoorEvent)) return;
 
         for (Room room : smartHome.getRooms()) {

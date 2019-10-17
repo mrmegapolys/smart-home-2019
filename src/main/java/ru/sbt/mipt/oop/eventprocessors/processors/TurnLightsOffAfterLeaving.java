@@ -10,9 +10,14 @@ import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.scenarios.LightScenarios;
 
 public class TurnLightsOffAfterLeaving implements EventProcessor {
+    private final SmartHome smartHome;
+
+    public TurnLightsOffAfterLeaving(SmartHome smartHome) {
+        this.smartHome = smartHome;
+    }
 
     @Override
-    public void process(SensorEvent event, SmartHome smartHome) {
+    public void process(SensorEvent event) {
         if (!(event instanceof DoorEvent)) return;
         if (event.getActionType() != DoorActionType.CLOSE) return;
 

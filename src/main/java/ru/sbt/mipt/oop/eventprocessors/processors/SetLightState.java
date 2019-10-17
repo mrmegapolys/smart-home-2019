@@ -10,9 +10,14 @@ import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.utils.Logger;
 
 public class SetLightState implements EventProcessor {
+    private final SmartHome smartHome;
+
+    public SetLightState(SmartHome smartHome) {
+        this.smartHome = smartHome;
+    }
 
     @Override
-    public void process(SensorEvent event, SmartHome smartHome) {
+    public void process(SensorEvent event) {
         if (!(event instanceof LightEvent)) return;
 
         for (Room room : smartHome.getRooms()) {

@@ -17,7 +17,7 @@ public class Application {
 
         SmartHome smartHome = SmartHomeSerializer.fromJson(encoded);
         EventFactory eventFactory = new RandomEventFactory();
-        Dispatcher dispatcher = new Dispatcher(smartHome, eventFactory);
+        Dispatcher dispatcher = new Dispatcher(eventFactory, smartHome);
         dispatcher.run();
 
     }
