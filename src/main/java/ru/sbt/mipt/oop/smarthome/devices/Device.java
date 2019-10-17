@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.devices;
+package ru.sbt.mipt.oop.smarthome.devices;
 
 public class Device {
     private final String id;

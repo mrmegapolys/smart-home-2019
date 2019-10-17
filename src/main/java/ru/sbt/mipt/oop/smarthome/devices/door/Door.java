@@ -1,6 +1,6 @@
-package ru.sbt.mipt.oop.devices.door;
+package ru.sbt.mipt.oop.smarthome.devices.door;
 
-import ru.sbt.mipt.oop.devices.Device;
+import ru.sbt.mipt.oop.smarthome.devices.Device;
 
 public class Door extends Device {
     private boolean isOpen;

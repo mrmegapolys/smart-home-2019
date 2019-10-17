@@ -2,12 +2,12 @@ package ru.sbt.mipt.oop.eventprocessors.processors;
 
 import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.SensorEventType;
-import ru.sbt.mipt.oop.devices.door.Door;
-import ru.sbt.mipt.oop.devices.door.DoorActionType;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
-import ru.sbt.mipt.oop.scenarios.LightScenarios;
 import ru.sbt.mipt.oop.smarthome.Room;
 import ru.sbt.mipt.oop.smarthome.SmartHome;
+import ru.sbt.mipt.oop.smarthome.devices.door.Door;
+import ru.sbt.mipt.oop.smarthome.devices.door.DoorActionType;
+import ru.sbt.mipt.oop.smarthome.scenarios.LightScenarios;
 
 public class TurnLightsOffAfterLeaving implements EventProcessor {
     private final SmartHome smartHome;

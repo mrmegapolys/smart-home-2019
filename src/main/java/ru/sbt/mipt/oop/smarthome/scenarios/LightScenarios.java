@@ -1,9 +1,9 @@
-package ru.sbt.mipt.oop.scenarios;
+package ru.sbt.mipt.oop.smarthome.scenarios;
 
 import ru.sbt.mipt.oop.Logger;
-import ru.sbt.mipt.oop.devices.light.Light;
 import ru.sbt.mipt.oop.smarthome.Room;
 import ru.sbt.mipt.oop.smarthome.SmartHome;
+import ru.sbt.mipt.oop.smarthome.devices.light.Light;
 
 public class LightScenarios {
     public static void turnAllLightsOff(SmartHome smartHome) {

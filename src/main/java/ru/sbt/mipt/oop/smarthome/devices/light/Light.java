@@ -1,6 +1,6 @@
-package ru.sbt.mipt.oop.devices.light;
+package ru.sbt.mipt.oop.smarthome.devices.light;
 
-import ru.sbt.mipt.oop.devices.Device;
+import ru.sbt.mipt.oop.smarthome.devices.Device;
 
 public class Light extends Device {
     private boolean isOn;

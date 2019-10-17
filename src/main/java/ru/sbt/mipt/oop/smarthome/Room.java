@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop.smarthome;
 
-import ru.sbt.mipt.oop.devices.door.Door;
-import ru.sbt.mipt.oop.devices.light.Light;
+import ru.sbt.mipt.oop.smarthome.devices.door.Door;
+import ru.sbt.mipt.oop.smarthome.devices.light.Light;
 
 import java.util.Collection;
 
