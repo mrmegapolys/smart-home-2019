@@ -2,7 +2,6 @@ package ru.sbt.mipt.oop;
 
 import ru.sbt.mipt.oop.eventfactories.EventFactory;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
-import ru.sbt.mipt.oop.eventprocessors.ProcessorFactory;
 import ru.sbt.mipt.oop.utils.Logger;
 
 import java.util.List;
@@ -12,9 +11,9 @@ public class Dispatcher {
     private final EventFactory eventFactory;
     private final List<EventProcessor> processors;
 
-    public Dispatcher(EventFactory eventFactory, SmartHome smartHome) {
+    public Dispatcher(EventFactory eventFactory, List<EventProcessor> processors) {
         this.eventFactory = eventFactory;
-        this.processors = ProcessorFactory.getProcessors(smartHome);
+        this.processors = processors;
     }
 
     public void run() {
