@@ -12,42 +12,73 @@ import ru.sbt.mipt.oop.smarthome.devices.light.Light;
 import ru.sbt.mipt.oop.smarthome.devices.light.LightActionType;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SetLightStateTest {
     private SmartHome smartHome;
     private EventProcessor processor;
+    private List<String> turnedOnLights;
+    private List<String> turnedOffLights;
+    private Random randomGenerator;
 
     @BeforeEach
     void setUp() throws IOException {
         smartHome = SmartHomeProvider.readFile("smart-home-1.js", "json");
         processor = new SetLightState(smartHome);
+        turnedOnLights = getLights(true);
+        turnedOffLights = getLights(false);
+        randomGenerator = new Random();
     }
 
     @Test
     void testTurnedOffLightTurnsOn() {
-        String OBJECT_ID = "4";
-        SensorEvent event = new SensorEvent(SensorEventType.LIGHT_EVENT, LightActionType.ON, OBJECT_ID);
-        checkLightCondition(false, OBJECT_ID);
+        int randInt = randomGenerator.nextInt(turnedOffLights.size());
+        String lightId = turnedOffLights.get(randInt);
+        SensorEvent event = new SensorEvent(SensorEventType.LIGHT_EVENT, LightActionType.ON, lightId);
+
         processor.process(event);
-        checkLightCondition(true, OBJECT_ID);
+        turnedOffLights.remove(lightId);
+        turnedOnLights.add(lightId);
+
+        checkLightsCondition(turnedOnLights, true);
+        checkLightsCondition(turnedOffLights, false);
     }
 
     @Test
     void testTurnedOnLightTurnsOff() {
-        String OBJECT_ID = "2";
-        SensorEvent event = new SensorEvent(SensorEventType.LIGHT_EVENT, LightActionType.OFF, OBJECT_ID);
-        checkLightCondition(true, OBJECT_ID);
+        int randInt = randomGenerator.nextInt(turnedOnLights.size());
+        String lightId = turnedOnLights.get(randInt);
+        SensorEvent event = new SensorEvent(SensorEventType.LIGHT_EVENT, LightActionType.OFF, lightId);
+
         processor.process(event);
-        checkLightCondition(false, OBJECT_ID);
+        turnedOnLights.remove(lightId);
+        turnedOffLights.add(lightId);
+
+        checkLightsCondition(turnedOnLights, true);
+        checkLightsCondition(turnedOffLights, false);
     }
 
-    private void checkLightCondition(boolean condition, String objectId) {
-        smartHome.execute( (Actionable actionable) -> {
+    private List<String> getLights(boolean condition) {
+        List<String> lights = new ArrayList<>();
+        smartHome.execute((Actionable actionable) -> {
             if (!(actionable instanceof Light)) return;
             Light light = (Light) actionable;
-            if (!(light.getId().equals(objectId))) return;
+            if (light.isOn() == condition) {
+                lights.add(light.getId());
+            }
+        });
+        return lights;
+    }
+
+    private void checkLightsCondition(List<String> lightIds, boolean condition) {
+        smartHome.execute((Actionable actionable) -> {
+            if (!(actionable instanceof Light)) return;
+            Light light = (Light) actionable;
+            if (!(lightIds.contains(light.getId()))) return;
             assertEquals(light.isOn(), condition);
         });
     }
