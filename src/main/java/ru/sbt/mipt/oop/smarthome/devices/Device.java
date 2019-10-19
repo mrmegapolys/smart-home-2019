@@ -16,6 +16,6 @@ public class Device implements Actionable {
 
     @Override
     public void execute(Action action) {
-        action.run();
+        action.run(this);
     }
 }
