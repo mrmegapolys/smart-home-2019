@@ -75,11 +75,11 @@ class TurnLightsOffAfterClosingHallDoorTest {
         return notHallDoorIds;
     }
 
-    private void checkLightsCondition(List<String> LightIds, boolean condition) {
+    private void checkLightsCondition(List<String> lightIds, boolean condition) {
         smartHome.execute((Actionable actionable) -> {
             if (!(actionable instanceof Light)) return;
             Light light = (Light) actionable;
-            if (!(LightIds.contains(light.getId()))) return;
+            if (!(lightIds.contains(light.getId()))) return;
             assertEquals(light.isOn(), condition);
         });
     }
