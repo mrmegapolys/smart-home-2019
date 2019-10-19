@@ -5,7 +5,7 @@ import ru.sbt.mipt.oop.eventfactories.RandomEventFactory;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.eventprocessors.processors.SetDoorState;
 import ru.sbt.mipt.oop.eventprocessors.processors.SetLightState;
-import ru.sbt.mipt.oop.eventprocessors.processors.TurnLightsOffAfterLeaving;
+import ru.sbt.mipt.oop.eventprocessors.processors.TurnLightsOffAfterClosingHallDoor;
 import ru.sbt.mipt.oop.smarthome.SmartHome;
 import ru.sbt.mipt.oop.smarthome.SmartHomeProvider;
 
@@ -38,7 +38,7 @@ public class Application {
         List<EventProcessor> processors = new ArrayList<>();
 
         processors.add(new SetDoorState(smartHome));
-        processors.add(new TurnLightsOffAfterLeaving(smartHome));
+        processors.add(new TurnLightsOffAfterClosingHallDoor(smartHome));
         processors.add(new SetLightState(smartHome));
 
         return processors;
