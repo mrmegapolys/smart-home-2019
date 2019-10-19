@@ -14,4 +14,7 @@ public class Door extends Device {
         isOpen = open;
     }
 
+    public boolean isOpen() {
+        return isOpen;
+    }
 }

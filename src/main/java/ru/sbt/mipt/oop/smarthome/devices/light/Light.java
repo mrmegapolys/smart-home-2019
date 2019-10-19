@@ -14,4 +14,7 @@ public class Light extends Device {
         isOn = on;
     }
 
+    public boolean isOn() {
+        return isOn;
+    }
 }
