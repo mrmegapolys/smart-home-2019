@@ -1,16 +1,24 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.devices.ActionType;
+
 public class SensorEvent {
-    private final SensorEventType type;
+    private final SensorEventType eventType;
+    private final ActionType actionType;
     private final String objectId;
 
-    public SensorEvent(SensorEventType type, String objectId) {
-        this.type = type;
+    public SensorEvent(SensorEventType eventType, ActionType actionType, String objectId) {
+        this.eventType = eventType;
+        this.actionType = actionType;
         this.objectId = objectId;
     }
 
-    public SensorEventType getType() {
-        return type;
+    public SensorEventType getEventType() {
+        return eventType;
+    }
+
+    public ActionType getActionType() {
+        return actionType;
     }
 
     public String getObjectId() {
@@ -20,7 +28,8 @@ public class SensorEvent {
     @Override
     public String toString() {
         return "SensorEvent{" +
-                "type=" + type +
+                "eventType=" + eventType +
+                ", actionType=" + actionType +
                 ", objectId='" + objectId + '\'' +
                 '}';
     }
