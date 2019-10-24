@@ -18,6 +18,10 @@ public class Alarm extends Device {
         this.state = state;
     }
 
+    public AlarmState getState() {
+        return state;
+    }
+
     public int getCode() {
         return code;
     }
