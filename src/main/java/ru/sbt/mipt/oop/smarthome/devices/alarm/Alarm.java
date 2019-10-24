@@ -2,15 +2,16 @@ package ru.sbt.mipt.oop.smarthome.devices.alarm;
 
 import ru.sbt.mipt.oop.smarthome.devices.Device;
 import ru.sbt.mipt.oop.smarthome.devices.alarm.states.AlarmState;
+import ru.sbt.mipt.oop.smarthome.devices.alarm.states.Deactivated;
 
 public class Alarm extends Device {
     private AlarmState state;
     private final int code;
 
-    public Alarm(String id, AlarmState state, int code) {
+    public Alarm(String id, int code) {
         super(id);
-        this.state = state;
         this.code = code;
+        this.state = new Deactivated(this);
     }
 
     public void setState(AlarmState state) {
