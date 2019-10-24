@@ -22,8 +22,8 @@ public class Alarm extends Device {
         return state;
     }
 
-    public int getCode() {
-        return code;
+    public boolean isCorrectCode(int code) {
+        return this.code == code;
     }
 
     public void activate(int code) {

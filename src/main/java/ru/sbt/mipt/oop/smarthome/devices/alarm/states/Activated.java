@@ -15,7 +15,7 @@ public class Activated implements AlarmState {
 
     @Override
     public void deactivate(int code) {
-        if (code == alarm.getCode()) {
+        if (alarm.isCorrectCode(code)) {
             alarm.setState(new Deactivated(alarm));
         } else {
             alarm.triggerAlert();
