@@ -1,8 +1,9 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.smarthome.utils;
 
-import ru.sbt.mipt.oop.devices.door.Door;
-import ru.sbt.mipt.oop.devices.light.Light;
-import ru.sbt.mipt.oop.utils.Writer;
+import ru.sbt.mipt.oop.smarthome.Room;
+import ru.sbt.mipt.oop.smarthome.SmartHome;
+import ru.sbt.mipt.oop.smarthome.devices.door.Door;
+import ru.sbt.mipt.oop.smarthome.devices.light.Light;
 
 import java.io.IOException;
 import java.util.Arrays;

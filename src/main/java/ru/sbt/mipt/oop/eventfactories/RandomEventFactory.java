@@ -2,8 +2,8 @@ package ru.sbt.mipt.oop.eventfactories;
 
 import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.SensorEventType;
-import ru.sbt.mipt.oop.devices.door.DoorActionType;
-import ru.sbt.mipt.oop.devices.light.LightActionType;
+import ru.sbt.mipt.oop.smarthome.devices.door.DoorActionType;
+import ru.sbt.mipt.oop.smarthome.devices.light.LightActionType;
 
 public class RandomEventFactory implements EventFactory {
 

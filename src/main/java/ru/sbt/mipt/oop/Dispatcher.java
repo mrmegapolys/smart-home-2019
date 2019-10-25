@@ -2,7 +2,6 @@ package ru.sbt.mipt.oop;
 
 import ru.sbt.mipt.oop.eventfactories.EventFactory;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
-import ru.sbt.mipt.oop.utils.Logger;
 
 import java.util.List;
 

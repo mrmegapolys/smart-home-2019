@@ -1,13 +1,13 @@
 package ru.sbt.mipt.oop.eventprocessors.processors;
 
-import ru.sbt.mipt.oop.Room;
+import ru.sbt.mipt.oop.Logger;
 import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.SensorEventType;
-import ru.sbt.mipt.oop.SmartHome;
-import ru.sbt.mipt.oop.devices.door.Door;
-import ru.sbt.mipt.oop.devices.door.DoorActionType;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
-import ru.sbt.mipt.oop.utils.Logger;
+import ru.sbt.mipt.oop.smarthome.Actionable;
+import ru.sbt.mipt.oop.smarthome.SmartHome;
+import ru.sbt.mipt.oop.smarthome.devices.door.Door;
+import ru.sbt.mipt.oop.smarthome.devices.door.DoorActionType;
 
 public class SetDoorState implements EventProcessor {
     private final SmartHome smartHome;
@@ -20,24 +20,29 @@ public class SetDoorState implements EventProcessor {
     public void process(SensorEvent event) {
         if (event.getEventType() != SensorEventType.DOOR_EVENT) return;
 
-        for (Room room : smartHome.getRooms()) {
-            for (Door door: room.getDoors()) {
-                if (door.getId().equals(event.getObjectId())) {
+        smartHome.execute( (Actionable actionable) -> {
+            if (!(actionable instanceof Door)) return;
+            Door door = (Door) actionable;
+            if (!(door.getId().equals(event.getObjectId()))) return;
 
-                    if (event.getActionType() == DoorActionType.OPEN) {
-                        door.setOpen(true);
-                        Logger.info("Door " + door.getId() + " in room " + room.getName() + " was opened.");
-                        return;
-                    }
-
-                    if (event.getActionType() == DoorActionType.CLOSE) {
-                        door.setOpen(false);
-                        Logger.info("Door " + door.getId() + " in room " + room.getName() + " was closed.");
-                    }
-
-                }
+            if (event.getActionType() == DoorActionType.OPEN) {
+                setDoorOpened(door);
             }
-        }
+            if (event.getActionType() == DoorActionType.CLOSE) {
+                setDoorClosed(door);
+            }
+
+        });
+    }
+
+    private void setDoorClosed(Door door) {
+        door.setOpen(false);
+        Logger.info("Door " + door.getId() + " was closed.");
+    }
+
+    private void setDoorOpened(Door door) {
+        door.setOpen(true);
+        Logger.info("Door " + door.getId() + " was opened.");
     }
 }
 

@@ -1,6 +1,6 @@
 package ru.sbt.mipt.oop;
 
-import ru.sbt.mipt.oop.devices.ActionType;
+import ru.sbt.mipt.oop.smarthome.devices.ActionType;
 
 public class SensorEvent {
     private final SensorEventType eventType;
