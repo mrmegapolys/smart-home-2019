@@ -16,7 +16,7 @@ import java.util.List;
 public class Application {
 
     public static void main(String... args) {
-        String FILEPATH = "smart-home-1.js";
+        String FILEPATH = "output.js";
         SmartHome smartHome;
 
         try {
@@ -31,7 +31,6 @@ public class Application {
 
         Dispatcher dispatcher = new Dispatcher(eventFactory, processors);
         dispatcher.run();
-
     }
 
     private static List<EventProcessor> getProcessors(SmartHome smartHome) {
