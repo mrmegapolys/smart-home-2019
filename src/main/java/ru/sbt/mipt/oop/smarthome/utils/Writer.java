@@ -10,8 +10,9 @@ public class Writer {
 
     public static void writeStringToFile(String body, String filename) throws IOException {
         Path path = Paths.get(filename);
-        BufferedWriter writer = Files.newBufferedWriter(path);
-        writer.write(body);
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+            writer.write(body);
+        }
     }
 
 }
