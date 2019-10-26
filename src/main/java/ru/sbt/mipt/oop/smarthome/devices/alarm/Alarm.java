@@ -1,8 +1,6 @@
 package ru.sbt.mipt.oop.smarthome.devices.alarm;
 
 import ru.sbt.mipt.oop.smarthome.devices.Device;
-import ru.sbt.mipt.oop.smarthome.devices.alarm.states.AlarmState;
-import ru.sbt.mipt.oop.smarthome.devices.alarm.states.Deactivated;
 
 public class Alarm extends Device {
     private AlarmState state;
@@ -18,12 +16,12 @@ public class Alarm extends Device {
         return state;
     }
 
-    public void setState(AlarmState state) {
+    void setState(AlarmState state) {
         this.state = state;
     }
 
-    public int getCode() {
-        return code;
+    boolean isCorrectCode(int code) {
+        return this.code == code;
     }
 
     public void activate(int code) {

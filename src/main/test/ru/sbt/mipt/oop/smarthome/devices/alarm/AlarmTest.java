@@ -2,9 +2,6 @@ package ru.sbt.mipt.oop.smarthome.devices.alarm;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.sbt.mipt.oop.smarthome.devices.alarm.states.Activated;
-import ru.sbt.mipt.oop.smarthome.devices.alarm.states.Alert;
-import ru.sbt.mipt.oop.smarthome.devices.alarm.states.Deactivated;
 
 import java.util.Random;
 

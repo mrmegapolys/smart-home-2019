@@ -1,6 +1,4 @@
-package ru.sbt.mipt.oop.smarthome.devices.alarm.states;
-
-import ru.sbt.mipt.oop.smarthome.devices.alarm.Alarm;
+package ru.sbt.mipt.oop.smarthome.devices.alarm;
 
 public class Alert implements AlarmState {
     private Alarm alarm;
@@ -15,7 +13,7 @@ public class Alert implements AlarmState {
 
     @Override
     public void deactivate(int code) {
-        if (code == alarm.getCode()) {
+        if (alarm.isCorrectCode(code)) {
             alarm.setState(new Deactivated(alarm));
         }
     }

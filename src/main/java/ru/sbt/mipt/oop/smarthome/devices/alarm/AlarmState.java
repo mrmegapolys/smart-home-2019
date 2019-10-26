@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.smarthome.devices.alarm.states;
+package ru.sbt.mipt.oop.smarthome.devices.alarm;
 
 public interface AlarmState {
     void activate(int code);
