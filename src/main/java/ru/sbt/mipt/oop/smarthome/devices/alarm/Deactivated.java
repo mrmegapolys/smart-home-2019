@@ -3,7 +3,7 @@ package ru.sbt.mipt.oop.smarthome.devices.alarm;
 public class Deactivated implements AlarmState {
     private Alarm alarm;
 
-    public Deactivated(Alarm alarm) {
+    Deactivated(Alarm alarm) {
         this.alarm = alarm;
     }
 
