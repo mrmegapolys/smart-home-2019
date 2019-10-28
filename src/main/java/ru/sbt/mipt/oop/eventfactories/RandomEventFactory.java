@@ -11,7 +11,6 @@ import ru.sbt.mipt.oop.smarthome.devices.light.LightEvent;
 public class RandomEventFactory implements EventFactory {
 
     public SensorEvent getNextSensorEvent(){
-        SensorEvent event;
         if (Math.random() < 0.02) return null;
         String objectId = "" + ((int) (10 * Math.random()));
         int actionType = (int) (Math.random() * 2);

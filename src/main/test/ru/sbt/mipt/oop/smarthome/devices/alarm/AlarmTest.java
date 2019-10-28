@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AlarmTest {
-    private Random randomGenerator = new Random();
-    private int correctCode = randomGenerator.nextInt();
-    private int incorrectCode = getIncorrectCode();
-    private String id = String.valueOf(randomGenerator.nextInt());
+    private final Random randomGenerator = new Random();
+    private final int correctCode = randomGenerator.nextInt();
+    private final int incorrectCode = getIncorrectCode();
+    private final String id = String.valueOf(randomGenerator.nextInt());
     private Alarm alarm;
 
     private int getIncorrectCode() {
