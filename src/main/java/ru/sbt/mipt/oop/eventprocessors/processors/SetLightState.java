@@ -18,7 +18,7 @@ public class SetLightState implements EventProcessor {
 
     @Override
     public void process(SensorEvent event) {
-        if (!(event instanceof LightEvent)) return;
+        if (!isSupportedEvent(event)) return;
 
         smartHome.execute((Actionable actionable) -> {
             if (!(actionable instanceof Light)) return;
@@ -33,6 +33,11 @@ public class SetLightState implements EventProcessor {
             }
 
         });
+    }
+
+    @Override
+    public boolean isSupportedEvent(SensorEvent event) {
+        return event instanceof LightEvent;
     }
 
     private void setLightOff(Light light) {
