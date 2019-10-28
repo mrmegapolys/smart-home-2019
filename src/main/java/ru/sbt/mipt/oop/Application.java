@@ -3,6 +3,7 @@ package ru.sbt.mipt.oop;
 import ru.sbt.mipt.oop.eventfactories.EventFactory;
 import ru.sbt.mipt.oop.eventfactories.RandomEventFactory;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
+import ru.sbt.mipt.oop.eventprocessors.decorators.ActivatedAlarmDecorator;
 import ru.sbt.mipt.oop.eventprocessors.processors.SetAlarmState;
 import ru.sbt.mipt.oop.eventprocessors.processors.SetDoorState;
 import ru.sbt.mipt.oop.eventprocessors.processors.SetLightState;
@@ -35,11 +36,12 @@ public class Application {
     }
 
     private static List<EventProcessor> getProcessors(SmartHome smartHome) {
+        Notifier notifier = new SMSNotifier();
         List<EventProcessor> processors = new ArrayList<>();
 
-        processors.add(new SetDoorState(smartHome));
-        processors.add(new TurnLightsOffAfterClosingHallDoor(smartHome));
-        processors.add(new SetLightState(smartHome));
+        processors.add(new ActivatedAlarmDecorator(new SetDoorState(smartHome), smartHome, notifier));
+        processors.add(new ActivatedAlarmDecorator(new TurnLightsOffAfterClosingHallDoor(smartHome), smartHome, notifier));
+        processors.add(new ActivatedAlarmDecorator(new SetLightState(smartHome), smartHome, notifier));
         processors.add(new SetAlarmState(smartHome.getAlarm()));
 
         return processors;
