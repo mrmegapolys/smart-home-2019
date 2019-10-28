@@ -3,6 +3,7 @@ package ru.sbt.mipt.oop;
 import ru.sbt.mipt.oop.eventfactories.EventFactory;
 import ru.sbt.mipt.oop.eventfactories.RandomEventFactory;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
+import ru.sbt.mipt.oop.eventprocessors.processors.SetAlarmState;
 import ru.sbt.mipt.oop.eventprocessors.processors.SetDoorState;
 import ru.sbt.mipt.oop.eventprocessors.processors.SetLightState;
 import ru.sbt.mipt.oop.eventprocessors.processors.TurnLightsOffAfterClosingHallDoor;
@@ -39,6 +40,7 @@ public class Application {
         processors.add(new SetDoorState(smartHome));
         processors.add(new TurnLightsOffAfterClosingHallDoor(smartHome));
         processors.add(new SetLightState(smartHome));
+        processors.add(new SetAlarmState(smartHome.getAlarm()));
 
         return processors;
     }
