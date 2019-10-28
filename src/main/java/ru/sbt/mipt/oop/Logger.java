@@ -1,5 +1,7 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.smarthome.devices.SensorEvent;
+
 public class Logger {
     public static void newEvent(SensorEvent event) {
         write("Got event: " + event);

@@ -2,14 +2,14 @@ package ru.sbt.mipt.oop.eventprocessors.processors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.sbt.mipt.oop.SensorEvent;
-import ru.sbt.mipt.oop.SensorEventType;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.smarthome.Actionable;
 import ru.sbt.mipt.oop.smarthome.SmartHome;
 import ru.sbt.mipt.oop.smarthome.SmartHomeProvider;
+import ru.sbt.mipt.oop.smarthome.devices.SensorEvent;
 import ru.sbt.mipt.oop.smarthome.devices.door.Door;
 import ru.sbt.mipt.oop.smarthome.devices.door.DoorActionType;
+import ru.sbt.mipt.oop.smarthome.devices.door.DoorEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ class SetDoorStateTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        smartHome = SmartHomeProvider.readFile("smart-home-1.js", "json");
+        smartHome = SmartHomeProvider.readFile("output.js", "json");
         processor = new SetDoorState(smartHome);
         openDoors = getDoors(true);
         closedDoors = getDoors(false);
@@ -38,7 +38,7 @@ class SetDoorStateTest {
     void testClosedDoorOpens() {
         int randInt = randomGenerator.nextInt(closedDoors.size());
         String doorId = closedDoors.get(randInt);
-        SensorEvent event = new SensorEvent(SensorEventType.DOOR_EVENT, DoorActionType.OPEN, doorId);
+        SensorEvent event = new DoorEvent(DoorActionType.OPEN, doorId);
 
         processor.process(event);
         closedDoors.remove(doorId);
@@ -52,7 +52,7 @@ class SetDoorStateTest {
     void testOpenDoorCloses() {
         int randInt = randomGenerator.nextInt(openDoors.size());
         String doorId = openDoors.get(randInt);
-        SensorEvent event = new SensorEvent(SensorEventType.DOOR_EVENT, DoorActionType.CLOSE, doorId);
+        SensorEvent event = new DoorEvent(DoorActionType.CLOSE, doorId);
 
         processor.process(event);
         openDoors.remove(doorId);

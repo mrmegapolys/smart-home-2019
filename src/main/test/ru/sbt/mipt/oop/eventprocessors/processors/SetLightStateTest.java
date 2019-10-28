@@ -2,14 +2,14 @@ package ru.sbt.mipt.oop.eventprocessors.processors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.sbt.mipt.oop.SensorEvent;
-import ru.sbt.mipt.oop.SensorEventType;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.smarthome.Actionable;
 import ru.sbt.mipt.oop.smarthome.SmartHome;
 import ru.sbt.mipt.oop.smarthome.SmartHomeProvider;
+import ru.sbt.mipt.oop.smarthome.devices.SensorEvent;
 import ru.sbt.mipt.oop.smarthome.devices.light.Light;
 import ru.sbt.mipt.oop.smarthome.devices.light.LightActionType;
+import ru.sbt.mipt.oop.smarthome.devices.light.LightEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ class SetLightStateTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        smartHome = SmartHomeProvider.readFile("smart-home-1.js", "json");
+        smartHome = SmartHomeProvider.readFile("output.js", "json");
         processor = new SetLightState(smartHome);
         turnedOnLights = getLights(true);
         turnedOffLights = getLights(false);
@@ -38,7 +38,7 @@ class SetLightStateTest {
     void testTurnedOffLightTurnsOn() {
         int randInt = randomGenerator.nextInt(turnedOffLights.size());
         String lightId = turnedOffLights.get(randInt);
-        SensorEvent event = new SensorEvent(SensorEventType.LIGHT_EVENT, LightActionType.ON, lightId);
+        SensorEvent event = new LightEvent(LightActionType.ON, lightId);
 
         processor.process(event);
         turnedOffLights.remove(lightId);
@@ -52,7 +52,7 @@ class SetLightStateTest {
     void testTurnedOnLightTurnsOff() {
         int randInt = randomGenerator.nextInt(turnedOnLights.size());
         String lightId = turnedOnLights.get(randInt);
-        SensorEvent event = new SensorEvent(SensorEventType.LIGHT_EVENT, LightActionType.OFF, lightId);
+        SensorEvent event = new LightEvent(LightActionType.OFF, lightId);
 
         processor.process(event);
         turnedOnLights.remove(lightId);

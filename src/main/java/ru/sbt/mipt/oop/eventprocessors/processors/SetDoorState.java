@@ -1,13 +1,13 @@
 package ru.sbt.mipt.oop.eventprocessors.processors;
 
 import ru.sbt.mipt.oop.Logger;
-import ru.sbt.mipt.oop.SensorEvent;
-import ru.sbt.mipt.oop.SensorEventType;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.smarthome.Actionable;
 import ru.sbt.mipt.oop.smarthome.SmartHome;
+import ru.sbt.mipt.oop.smarthome.devices.SensorEvent;
 import ru.sbt.mipt.oop.smarthome.devices.door.Door;
 import ru.sbt.mipt.oop.smarthome.devices.door.DoorActionType;
+import ru.sbt.mipt.oop.smarthome.devices.door.DoorEvent;
 
 public class SetDoorState implements EventProcessor {
     private final SmartHome smartHome;
@@ -18,7 +18,7 @@ public class SetDoorState implements EventProcessor {
 
     @Override
     public void process(SensorEvent event) {
-        if (event.getEventType() != SensorEventType.DOOR_EVENT) return;
+        if (!(event instanceof DoorEvent)) return;
 
         smartHome.execute( (Actionable actionable) -> {
             if (!(actionable instanceof Door)) return;
