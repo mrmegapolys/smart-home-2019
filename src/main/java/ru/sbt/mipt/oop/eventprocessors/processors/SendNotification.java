@@ -1,19 +1,15 @@
-package ru.sbt.mipt.oop.eventprocessors.decorators;
+package ru.sbt.mipt.oop.eventprocessors.processors;
 
 import ru.sbt.mipt.oop.Notifier;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.smarthome.devices.SensorEvent;
-import ru.sbt.mipt.oop.smarthome.devices.alarm.Activated;
-import ru.sbt.mipt.oop.smarthome.devices.alarm.Alarm;
-import ru.sbt.mipt.oop.smarthome.devices.alarm.AlarmState;
-import ru.sbt.mipt.oop.smarthome.devices.alarm.Alert;
+import ru.sbt.mipt.oop.smarthome.devices.alarm.*;
 
-public class NotifierDecorator extends BaseProcessorDecorator {
+public class SendNotification implements EventProcessor {
     private final Alarm alarm;
     private final Notifier notifier;
 
-    public NotifierDecorator(EventProcessor delegate, Alarm alarm, Notifier notifier) {
-        super(delegate);
+    public SendNotification(Alarm alarm, Notifier notifier) {
         this.alarm = alarm;
         this.notifier = notifier;
     }
@@ -24,6 +20,10 @@ public class NotifierDecorator extends BaseProcessorDecorator {
         AlarmState state = alarm.getState();
 
         if (state instanceof Activated || state instanceof Alert) notifier.sendNotification();
-        super.process(event);
+    }
+
+    @Override
+    public boolean isSupportedEvent(SensorEvent event) {
+        return !(event instanceof AlarmEvent);
     }
 }
