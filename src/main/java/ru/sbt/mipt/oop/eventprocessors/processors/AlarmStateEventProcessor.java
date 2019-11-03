@@ -6,10 +6,10 @@ import ru.sbt.mipt.oop.smarthome.devices.alarm.Alarm;
 import ru.sbt.mipt.oop.smarthome.devices.alarm.AlarmActionType;
 import ru.sbt.mipt.oop.smarthome.devices.alarm.AlarmEvent;
 
-public class SetAlarmState implements EventProcessor {
+public class AlarmStateEventProcessor implements EventProcessor {
     private final Alarm alarm;
 
-    public SetAlarmState(Alarm alarm) {
+    public AlarmStateEventProcessor(Alarm alarm) {
         this.alarm = alarm;
     }
 

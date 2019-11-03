@@ -9,10 +9,10 @@ import ru.sbt.mipt.oop.smarthome.devices.door.Door;
 import ru.sbt.mipt.oop.smarthome.devices.door.DoorActionType;
 import ru.sbt.mipt.oop.smarthome.devices.door.DoorEvent;
 
-public class SetDoorState implements EventProcessor {
+public class DoorStateEventProcessor implements EventProcessor {
     private final SmartHome smartHome;
 
-    public SetDoorState(SmartHome smartHome) {
+    public DoorStateEventProcessor(SmartHome smartHome) {
         this.smartHome = smartHome;
     }
 

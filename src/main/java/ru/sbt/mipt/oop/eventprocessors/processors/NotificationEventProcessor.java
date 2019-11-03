@@ -5,11 +5,11 @@ import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.smarthome.devices.SensorEvent;
 import ru.sbt.mipt.oop.smarthome.devices.alarm.*;
 
-public class SendNotification implements EventProcessor {
+public class NotificationEventProcessor implements EventProcessor {
     private final Alarm alarm;
     private final Notifier notifier;
 
-    public SendNotification(Alarm alarm, Notifier notifier) {
+    public NotificationEventProcessor(Alarm alarm, Notifier notifier) {
         this.alarm = alarm;
         this.notifier = notifier;
     }

@@ -18,7 +18,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class TurnLightsOffAfterClosingHallDoorTest {
+class HallDoorEventProcessorTest {
     private SmartHome smartHome;
     private EventProcessor processor;
     private List<String> turnedOnLights;
@@ -28,7 +28,7 @@ class TurnLightsOffAfterClosingHallDoorTest {
     @BeforeEach
     void setUp() throws IOException {
         smartHome = SmartHomeProvider.readFile("output.js", "json");
-        processor = new TurnLightsOffAfterClosingHallDoor(smartHome);
+        processor = new HallDoorEventProcessor(smartHome);
         turnedOnLights = getLights(true);
         turnedOffLights = getLights(false);
         HALL_DOOR_ID = "4";

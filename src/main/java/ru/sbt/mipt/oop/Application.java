@@ -38,11 +38,11 @@ public class Application {
         Alarm alarm = smartHome.getAlarm();
         List<EventProcessor> processors = new ArrayList<>();
 
-        processors.add(new ActivatedAlarmDecorator(new SetDoorState(smartHome), alarm));
-        processors.add(new ActivatedAlarmDecorator(new SetLightState(smartHome), alarm));
-        processors.add(new ActivatedAlarmDecorator(new TurnLightsOffAfterClosingHallDoor(smartHome), alarm));
-        processors.add(new SetAlarmState(alarm));
-        processors.add(new SendNotification(alarm, notifier));
+        processors.add(new ActivatedAlarmDecorator(new DoorStateEventProcessor(smartHome), alarm));
+        processors.add(new ActivatedAlarmDecorator(new LightStateEventProcessor(smartHome), alarm));
+        processors.add(new ActivatedAlarmDecorator(new HallDoorEventProcessor(smartHome), alarm));
+        processors.add(new AlarmStateEventProcessor(alarm));
+        processors.add(new NotificationEventProcessor(alarm, notifier));
 
         return processors;
     }

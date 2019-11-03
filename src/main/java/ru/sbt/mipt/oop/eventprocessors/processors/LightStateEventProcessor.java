@@ -9,10 +9,10 @@ import ru.sbt.mipt.oop.smarthome.devices.light.Light;
 import ru.sbt.mipt.oop.smarthome.devices.light.LightActionType;
 import ru.sbt.mipt.oop.smarthome.devices.light.LightEvent;
 
-public class SetLightState implements EventProcessor {
+public class LightStateEventProcessor implements EventProcessor {
     private final SmartHome smartHome;
 
-    public SetLightState(SmartHome smartHome) {
+    public LightStateEventProcessor(SmartHome smartHome) {
         this.smartHome = smartHome;
     }
 

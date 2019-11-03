@@ -18,7 +18,7 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SetDoorStateTest {
+class DoorStateEventProcessorTest {
     private SmartHome smartHome;
     private EventProcessor processor;
     private List<String> openDoors;
@@ -28,7 +28,7 @@ class SetDoorStateTest {
     @BeforeEach
     void setUp() throws IOException {
         smartHome = SmartHomeProvider.readFile("output.js", "json");
-        processor = new SetDoorState(smartHome);
+        processor = new DoorStateEventProcessor(smartHome);
         openDoors = getDoors(true);
         closedDoors = getDoors(false);
         randomGenerator = new Random();

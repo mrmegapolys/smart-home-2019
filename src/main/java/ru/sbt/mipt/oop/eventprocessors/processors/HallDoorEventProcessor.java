@@ -10,10 +10,10 @@ import ru.sbt.mipt.oop.smarthome.devices.door.DoorActionType;
 import ru.sbt.mipt.oop.smarthome.devices.door.DoorEvent;
 import ru.sbt.mipt.oop.smarthome.scenarios.LightScenarios;
 
-public class TurnLightsOffAfterClosingHallDoor implements EventProcessor {
+public class HallDoorEventProcessor implements EventProcessor {
     private final SmartHome smartHome;
 
-    public TurnLightsOffAfterClosingHallDoor(SmartHome smartHome) {
+    public HallDoorEventProcessor(SmartHome smartHome) {
         this.smartHome = smartHome;
     }
 
