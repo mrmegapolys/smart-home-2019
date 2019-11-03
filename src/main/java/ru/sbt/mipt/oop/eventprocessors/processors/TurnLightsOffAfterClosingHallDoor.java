@@ -19,7 +19,7 @@ public class TurnLightsOffAfterClosingHallDoor implements EventProcessor {
 
     @Override
     public void process(SensorEvent event) {
-        if (!isSupportedEvent(event)) return;
+        if (!(event instanceof DoorEvent)) return;
         if (event.getActionType() != DoorActionType.CLOSE) return;
 
         smartHome.execute( (Actionable actionable) -> {
@@ -34,11 +34,6 @@ public class TurnLightsOffAfterClosingHallDoor implements EventProcessor {
             });
 
         });
-    }
-
-    @Override
-    public boolean isSupportedEvent(SensorEvent event) {
-        return event instanceof DoorEvent;
     }
 
 }

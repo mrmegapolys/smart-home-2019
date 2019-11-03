@@ -18,7 +18,7 @@ public class SetDoorState implements EventProcessor {
 
     @Override
     public void process(SensorEvent event) {
-        if (!isSupportedEvent(event)) return;
+        if (!(event instanceof DoorEvent)) return;
 
         smartHome.execute( (Actionable actionable) -> {
             if (!(actionable instanceof Door)) return;
@@ -33,11 +33,6 @@ public class SetDoorState implements EventProcessor {
             }
 
         });
-    }
-
-    @Override
-    public boolean isSupportedEvent(SensorEvent event) {
-        return event instanceof DoorEvent;
     }
 
     private void setDoorClosed(Door door) {

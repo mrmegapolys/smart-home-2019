@@ -14,10 +14,4 @@ public class BaseProcessorDecorator implements EventProcessor {
     public void process(SensorEvent event) {
         delegate.process(event);
     }
-
-    @Override
-    public boolean isSupportedEvent(SensorEvent event) {
-        return delegate.isSupportedEvent(event);
-    }
-
 }

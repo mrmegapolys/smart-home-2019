@@ -15,7 +15,7 @@ public class SetAlarmState implements EventProcessor {
 
     @Override
     public void process(SensorEvent event) {
-        if (!isSupportedEvent(event)) return;
+        if (!(event instanceof AlarmEvent)) return;
         if (!event.getObjectId().equals(alarm.getId())) return;
         int code = ((AlarmEvent) event).getCode();
 
@@ -27,11 +27,6 @@ public class SetAlarmState implements EventProcessor {
             deactivateAlarm(code);
         }
 
-    }
-
-    @Override
-    public boolean isSupportedEvent(SensorEvent event) {
-        return event instanceof AlarmEvent;
     }
 
     private void activateAlarm(int code) {

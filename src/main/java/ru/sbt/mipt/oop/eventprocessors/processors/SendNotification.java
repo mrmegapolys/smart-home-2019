@@ -16,14 +16,10 @@ public class SendNotification implements EventProcessor {
 
     @Override
     public void process(SensorEvent event) {
-        if (!isSupportedEvent(event)) return;
+        if (event instanceof AlarmEvent) return;
         AlarmState state = alarm.getState();
 
         if (state instanceof Activated || state instanceof Alert) notifier.sendNotification();
     }
 
-    @Override
-    public boolean isSupportedEvent(SensorEvent event) {
-        return !(event instanceof AlarmEvent);
-    }
 }
