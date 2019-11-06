@@ -37,9 +37,9 @@ public class HomeBuilder {
         );
         List<Room> rooms = Arrays.asList(kitchen, bathroom, bedroom, hall);
 
-        String alarmCode = "12345";
+        String defaultCode = "default";
         String alarmId = "0";
-        Alarm alarm = new Alarm(alarmId, alarmCode);
+        Alarm alarm = new Alarm(alarmId, defaultCode);
 
         SmartHome smartHome = new SmartHome(alarm, rooms);
         String encoded = SmartHomeSerializer.toJson(smartHome);

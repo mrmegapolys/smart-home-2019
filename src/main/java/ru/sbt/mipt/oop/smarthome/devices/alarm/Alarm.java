@@ -2,15 +2,13 @@ package ru.sbt.mipt.oop.smarthome.devices.alarm;
 
 import ru.sbt.mipt.oop.smarthome.devices.Device;
 
-import java.util.Objects;
-
 public class Alarm extends Device {
     private AlarmState state;
-    private final String code;
+    private final String defaultCode;
 
-    public Alarm(String id, String code) {
+    public Alarm(String id, String defaultCode) {
         super(id);
-        this.code = code;
+        this.defaultCode = defaultCode;
         this.state = new Deactivated(this);
     }
 
@@ -20,10 +18,6 @@ public class Alarm extends Device {
 
     void setState(AlarmState state) {
         this.state = state;
-    }
-
-    boolean isCorrectCode(String code) {
-        return Objects.equals(this.code, code);
     }
 
     public void activate(String code) {
@@ -36,5 +30,9 @@ public class Alarm extends Device {
 
     public void triggerAlert() {
         state.triggerAlert();
+    }
+
+    String getDefaultCode() {
+        return defaultCode;
     }
 }

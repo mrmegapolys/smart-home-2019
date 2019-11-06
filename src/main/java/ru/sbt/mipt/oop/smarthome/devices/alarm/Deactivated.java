@@ -9,9 +9,7 @@ public class Deactivated implements AlarmState {
 
     @Override
     public void activate(String code) {
-        if (alarm.isCorrectCode(code)) {
-            alarm.setState(new Activated(alarm));
-        }
+        alarm.setState(new Activated(alarm, code));
     }
 
     @Override
