@@ -8,11 +8,11 @@ public class Activated implements AlarmState {
     }
 
     @Override
-    public void activate(int code) {
+    public void activate(String code) {
     }
 
     @Override
-    public void deactivate(int code) {
+    public void deactivate(String code) {
         if (alarm.isCorrectCode(code)) {
             alarm.setState(new Deactivated(alarm));
         } else {

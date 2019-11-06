@@ -21,7 +21,7 @@ public class RandomEventFactory implements EventFactory {
             case (1):
                 return new LightEvent(LightActionType.values()[actionType], objectId);
             case (2):
-                return new AlarmEvent(AlarmActionType.values()[actionType], "0", 12345);
+                return new AlarmEvent(AlarmActionType.values()[actionType], "0", "12345");
             default:
                 return null;
         }

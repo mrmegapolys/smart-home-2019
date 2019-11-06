@@ -17,7 +17,7 @@ public class AlarmStateEventProcessor implements EventProcessor {
     public void process(SensorEvent event) {
         if (!(event instanceof AlarmEvent)) return;
         if (!event.getObjectId().equals(alarm.getId())) return;
-        int code = ((AlarmEvent) event).getCode();
+        String code = ((AlarmEvent) event).getCode();
 
         if (event.getActionType() == AlarmActionType.ACTIVATE) {
             activateAlarm(code);
@@ -29,12 +29,12 @@ public class AlarmStateEventProcessor implements EventProcessor {
 
     }
 
-    private void activateAlarm(int code) {
+    private void activateAlarm(String code) {
         alarm.activate(code);
         System.out.println("Alarm activated.");
     }
 
-    private void deactivateAlarm(int code) {
+    private void deactivateAlarm(String code) {
         alarm.deactivate(code);
         System.out.println("Alarm deactivated.");
     }

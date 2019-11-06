@@ -3,6 +3,7 @@ package ru.sbt.mipt.oop.smarthome.devices.alarm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -10,16 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AlarmTest {
     private final Random randomGenerator = new Random();
-    private final int correctCode = randomGenerator.nextInt();
-    private final int incorrectCode = getIncorrectCode();
+    private final String correctCode = String.valueOf(randomGenerator.nextInt());
+    private final String incorrectCode = getIncorrectCode();
     private final String id = String.valueOf(randomGenerator.nextInt());
     private Alarm alarm;
 
-    private int getIncorrectCode() {
-        int incorrectCode;
+    private String getIncorrectCode() {
+        String incorrectCode;
         do {
-            incorrectCode = randomGenerator.nextInt();
-        } while (incorrectCode == correctCode);
+            incorrectCode = String.valueOf(randomGenerator.nextInt());
+        } while (Objects.equals(incorrectCode, correctCode));
         return incorrectCode;
     }
 
