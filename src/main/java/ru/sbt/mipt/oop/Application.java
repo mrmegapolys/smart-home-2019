@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop;
 
-import ru.sbt.mipt.oop.eventfactories.EventFactory;
-import ru.sbt.mipt.oop.eventfactories.RandomEventFactory;
+import com.coolcompany.smarthome.events.SensorEventsManager;
+import ru.sbt.mipt.oop.eventprocessors.CCEventProcessorAdapter;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.eventprocessors.decorators.ActivatedAlarmDecorator;
 import ru.sbt.mipt.oop.eventprocessors.processors.*;
@@ -27,10 +27,12 @@ public class Application {
         }
 
         List<EventProcessor> processors = getProcessors(smartHome);
-        EventFactory eventFactory = new RandomEventFactory();
+        SensorEventsManager manager = new SensorEventsManager();
 
-        Dispatcher dispatcher = new Dispatcher(eventFactory, processors);
-        dispatcher.run();
+        for (EventProcessor processor : processors) {
+            manager.registerEventHandler(new CCEventProcessorAdapter(processor));
+        }
+        manager.start();
     }
 
     private static List<EventProcessor> getProcessors(SmartHome smartHome) {
