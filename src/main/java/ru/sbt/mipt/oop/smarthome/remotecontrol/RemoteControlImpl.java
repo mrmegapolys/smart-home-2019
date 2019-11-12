@@ -22,7 +22,7 @@ public class RemoteControlImpl implements RemoteControl {
     }
 
     @Override
-    public void onButtonPressed(String buttonCode, String rcId) {
+    public void onButtonPressed(String buttonCode) {
         if (!buttons.contains(buttonCode)) return;
         Command command = commands.get(buttonCode);
         if (command == null) return;
