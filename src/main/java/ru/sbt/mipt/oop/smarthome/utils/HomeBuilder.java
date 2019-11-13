@@ -2,11 +2,13 @@ package ru.sbt.mipt.oop.smarthome.utils;
 
 import ru.sbt.mipt.oop.smarthome.Room;
 import ru.sbt.mipt.oop.smarthome.SmartHome;
+import ru.sbt.mipt.oop.smarthome.devices.alarm.Alarm;
 import ru.sbt.mipt.oop.smarthome.devices.door.Door;
 import ru.sbt.mipt.oop.smarthome.devices.light.Light;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 public class HomeBuilder {
 
@@ -33,7 +35,13 @@ public class HomeBuilder {
                 Arrays.asList(new Door("4", false)),
                 "hall"
         );
-        SmartHome smartHome = new SmartHome(Arrays.asList(kitchen, bathroom, bedroom, hall));
+        List<Room> rooms = Arrays.asList(kitchen, bathroom, bedroom, hall);
+
+        String defaultCode = "default";
+        String alarmId = "0";
+        Alarm alarm = new Alarm(alarmId, defaultCode);
+
+        SmartHome smartHome = new SmartHome(alarm, rooms);
         String encoded = SmartHomeSerializer.toJson(smartHome);
 
         try {

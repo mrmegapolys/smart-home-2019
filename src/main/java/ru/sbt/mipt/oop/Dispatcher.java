@@ -2,6 +2,7 @@ package ru.sbt.mipt.oop;
 
 import ru.sbt.mipt.oop.eventfactories.EventFactory;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
+import ru.sbt.mipt.oop.smarthome.devices.SensorEvent;
 
 import java.util.List;
 
