@@ -10,7 +10,7 @@ import ru.sbt.mipt.oop.eventprocessors.processors.*;
 @Configuration
 public class ProcessorsConfiguration{
     @Autowired
-    MainConfiguration main;
+    private MainConfiguration main;
 
     @Bean
     EventProcessor doorStateEventProcessor() {
