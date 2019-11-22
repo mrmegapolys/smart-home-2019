@@ -1,6 +1,7 @@
 package ru.sbt.mipt.oop;
 
 import com.coolcompany.smarthome.events.SensorEventsManager;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,11 +32,12 @@ public class MainConfiguration {
 
     @Bean
     SmartHome smartHome() {
+        String filepath = "output.js";
         try {
-            return SmartHomeProvider.readFile("output.js", "json");
+            return SmartHomeProvider.readFile(filepath, "json");
         } catch (IOException e) {
-            System.out.println("Failed to read smart home config.");
-            throw new RuntimeException(e);
+            String msg = String.format("Failed to read smart home config from \"%s\"", filepath);
+            throw new BeanCreationException(msg, e);
         }
     }
 
