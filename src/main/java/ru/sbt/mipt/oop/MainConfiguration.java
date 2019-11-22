@@ -1,6 +1,7 @@
 package ru.sbt.mipt.oop;
 
 import com.coolcompany.smarthome.events.SensorEventsManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -16,9 +17,11 @@ import java.util.Collection;
 @Configuration
 @Import(ProcessorsConfiguration.class)
 public class MainConfiguration {
+    @Autowired
+    private Collection<EventProcessor> processors;
 
     @Bean
-    SensorEventsManager sensorEventsManager(Collection<EventProcessor> processors) {
+    SensorEventsManager sensorEventsManager() {
         SensorEventsManager manager = new SensorEventsManager();
         for (EventProcessor eventProcessor : processors) {
             manager.registerEventHandler(new CCEventProcessorAdapter(eventProcessor));
