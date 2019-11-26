@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

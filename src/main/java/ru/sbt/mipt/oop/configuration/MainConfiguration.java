@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.configuration;
 
 import com.coolcompany.smarthome.events.SensorEventsManager;
 import org.springframework.beans.factory.BeanCreationException;
@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import ru.sbt.mipt.oop.Notifier;
+import ru.sbt.mipt.oop.SMSNotifier;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
 import ru.sbt.mipt.oop.eventprocessors.adapters.ccsensorevent.CCEventAdapter;
 import ru.sbt.mipt.oop.eventprocessors.adapters.ccsensorevent.CCEventProcessorAdapter;
