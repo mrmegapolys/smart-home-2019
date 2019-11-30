@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import rc.RemoteControl;
+import rc.RemoteControlRegistry;
 import ru.sbt.mipt.oop.Notifier;
 import ru.sbt.mipt.oop.SMSNotifier;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
@@ -14,9 +16,12 @@ import ru.sbt.mipt.oop.eventprocessors.adapters.ccsensorevent.CCEventProcessorAd
 import ru.sbt.mipt.oop.smarthome.SmartHome;
 import ru.sbt.mipt.oop.smarthome.SmartHomeProvider;
 import ru.sbt.mipt.oop.smarthome.devices.alarm.Alarm;
+import ru.sbt.mipt.oop.smarthome.remotecontrol.RemoteControlImpl;
 
 import java.io.IOException;
-import java.util.Collection;
+import java.util.*;
+
+import static java.util.Arrays.asList;
 
 @Configuration
 @ComponentScan
@@ -25,6 +30,8 @@ public class MainConfiguration {
     private Collection<EventProcessor> processors;
     @Autowired
     private Collection<CCEventAdapter> adapters;
+    @Autowired
+    private CommandsConfiguration commandsConfiguration;
 
     @Bean
     SensorEventsManager sensorEventsManager() {
@@ -54,6 +61,35 @@ public class MainConfiguration {
     @Bean
     Notifier notifier() {
         return new SMSNotifier();
+    }
+
+    @Bean
+    RemoteControlRegistry remoteControlRegistry(Collection<RemoteControl> controls) {
+        RemoteControlRegistry registry = new RemoteControlRegistry();
+        registry.registerRemoteControl(remoteControlImpl(), "rc_id");
+        return registry;
+    }
+
+    @Bean
+    RemoteControl remoteControlImpl() {
+        RemoteControlImpl remoteControl = new RemoteControlImpl(getButtons());
+        registerCommands(remoteControl);
+        return remoteControl;
+    }
+
+    private Set<String> getButtons() {
+        return new HashSet<>(asList(
+                "A", "B", "C", "D", "1", "2", "3", "4"
+        ));
+    }
+
+    private void registerCommands(RemoteControlImpl remoteControl) {
+        remoteControl.setCommand("A", commandsConfiguration.activateAlarmCommand());
+        remoteControl.setCommand("B", commandsConfiguration.triggerAlertCommand());
+        remoteControl.setCommand("1", commandsConfiguration.turnAllLightsOnCommand());
+        remoteControl.setCommand("2", commandsConfiguration.turnAllLightsOffCommand());
+        remoteControl.setCommand("3", commandsConfiguration.turnHallLightOnCommand());
+        remoteControl.setCommand("4", commandsConfiguration.closeHallDoorCommand());
     }
 
 }
