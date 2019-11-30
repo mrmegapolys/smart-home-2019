@@ -2,12 +2,14 @@ package ru.sbt.mipt.oop.eventprocessors.processors;
 
 import ru.sbt.mipt.oop.Logger;
 import ru.sbt.mipt.oop.eventprocessors.EventProcessor;
-import ru.sbt.mipt.oop.smarthome.Actionable;
 import ru.sbt.mipt.oop.smarthome.SmartHome;
 import ru.sbt.mipt.oop.smarthome.devices.SensorEvent;
 import ru.sbt.mipt.oop.smarthome.devices.door.Door;
 import ru.sbt.mipt.oop.smarthome.devices.door.DoorActionType;
 import ru.sbt.mipt.oop.smarthome.devices.door.DoorEvent;
+
+import static ru.sbt.mipt.oop.smarthome.devices.door.DoorActionType.CLOSE;
+import static ru.sbt.mipt.oop.smarthome.devices.door.DoorActionType.OPEN;
 
 public class DoorStateEventProcessor implements EventProcessor {
     private final SmartHome smartHome;
@@ -20,18 +22,17 @@ public class DoorStateEventProcessor implements EventProcessor {
     public void process(SensorEvent event) {
         if (!(event instanceof DoorEvent)) return;
 
-        smartHome.execute( (Actionable actionable) -> {
+        smartHome.execute(actionable -> {
             if (!(actionable instanceof Door)) return;
             Door door = (Door) actionable;
             if (!(door.getId().equals(event.getObjectId()))) return;
 
-            if (event.getActionType() == DoorActionType.OPEN) {
+            if (event.getActionType() == OPEN) {
                 setDoorOpened(door);
             }
-            if (event.getActionType() == DoorActionType.CLOSE) {
+            if (event.getActionType() == CLOSE) {
                 setDoorClosed(door);
             }
-
         });
     }
 

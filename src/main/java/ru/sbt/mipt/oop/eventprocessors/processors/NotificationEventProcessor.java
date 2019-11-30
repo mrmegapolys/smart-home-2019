@@ -19,7 +19,9 @@ public class NotificationEventProcessor implements EventProcessor {
         if (event instanceof AlarmEvent) return;
         AlarmState state = alarm.getState();
 
-        if (state instanceof Activated || state instanceof Alert) notifier.sendNotification();
+        if (state instanceof Activated || state instanceof Alert) {
+            notifier.sendNotification();
+        }
     }
 
 }

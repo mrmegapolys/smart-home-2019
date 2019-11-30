@@ -6,7 +6,10 @@ import ru.sbt.mipt.oop.smarthome.devices.alarm.Alarm;
 import ru.sbt.mipt.oop.smarthome.devices.alarm.AlarmActionType;
 import ru.sbt.mipt.oop.smarthome.devices.alarm.AlarmEvent;
 
-public class AlarmStateEventProcessor implements EventProcessor {
+import static ru.sbt.mipt.oop.smarthome.devices.alarm.AlarmActionType.ACTIVATE;
+import static ru.sbt.mipt.oop.smarthome.devices.alarm.AlarmActionType.DEACTIVATE;
+
+public class AlarmStateEventProcessor implements EventProcessor<AlarmEvent> {
     private final Alarm alarm;
 
     public AlarmStateEventProcessor(Alarm alarm) {
@@ -14,16 +17,15 @@ public class AlarmStateEventProcessor implements EventProcessor {
     }
 
     @Override
-    public void process(SensorEvent event) {
-        if (!(event instanceof AlarmEvent)) return;
+    public void process(AlarmEvent event) {
         if (!event.getObjectId().equals(alarm.getId())) return;
-        String code = ((AlarmEvent) event).getCode();
 
-        if (event.getActionType() == AlarmActionType.ACTIVATE) {
+        String code = ((AlarmEvent) event).getCode();
+        if (event.getActionType() == ACTIVATE) {
             activateAlarm(code);
         }
 
-        if (event.getActionType() == AlarmActionType.DEACTIVATE) {
+        if (event.getActionType() == DEACTIVATE) {
             deactivateAlarm(code);
         }
 

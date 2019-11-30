@@ -17,11 +17,11 @@ public class Activated implements AlarmState {
 
     @Override
     public void deactivate(String code) {
-        if (Objects.equals(code, this.code)) {
-            alarm.setState(new Deactivated(alarm));
-        } else {
-            alarm.setState(new Alert(alarm, this.code));
-        }
+        AlarmState state = Objects.equals(code, this.code) ?
+                new Deactivated(alarm) :
+                new Alert(alarm, this.code);
+
+        alarm.setState(state);
     }
 
     @Override

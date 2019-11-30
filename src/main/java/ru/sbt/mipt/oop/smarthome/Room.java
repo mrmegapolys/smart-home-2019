@@ -23,11 +23,15 @@ public class Room implements Actionable {
     @Override
     public void execute(Action action) {
         action.run(this);
-        for (Light light : lights) {
-            light.execute(action);
-        }
-        for (Door door : doors) {
-            door.execute(action);
-        }
+        processLights(action);
+        processDoors(action);
+    }
+
+    private void processDoors(Action action) {
+        doors.forEach(door -> door.execute(action));
+    }
+
+    private void processLights(Action action) {
+        lights.forEach(light -> light.execute(action));
     }
 }
