@@ -4,6 +4,7 @@ import ru.sbt.mipt.oop.smarthome.Actionable;
 import ru.sbt.mipt.oop.smarthome.Room;
 import ru.sbt.mipt.oop.smarthome.SmartHome;
 import ru.sbt.mipt.oop.smarthome.devices.light.Light;
+import ru.sbt.mipt.oop.smarthome.remotecontrol.Command;
 
 public class TurnHallLightOnCommand implements Command {
     private final SmartHome smartHome;

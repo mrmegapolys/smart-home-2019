@@ -4,6 +4,7 @@ import ru.sbt.mipt.oop.smarthome.Actionable;
 import ru.sbt.mipt.oop.smarthome.Room;
 import ru.sbt.mipt.oop.smarthome.SmartHome;
 import ru.sbt.mipt.oop.smarthome.devices.door.Door;
+import ru.sbt.mipt.oop.smarthome.remotecontrol.Command;
 
 public class CloseHallDoorCommand implements Command {
     private final SmartHome smartHome;

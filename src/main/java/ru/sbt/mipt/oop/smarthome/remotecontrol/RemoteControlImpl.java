@@ -1,7 +1,6 @@
 package ru.sbt.mipt.oop.smarthome.remotecontrol;
 
 import rc.RemoteControl;
-import ru.sbt.mipt.oop.smarthome.remotecontrol.commands.Command;
 
 import java.util.HashMap;
 import java.util.Map;

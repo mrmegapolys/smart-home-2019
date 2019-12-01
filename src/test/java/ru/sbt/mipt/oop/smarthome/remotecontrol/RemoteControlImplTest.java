@@ -3,7 +3,6 @@ package ru.sbt.mipt.oop.smarthome.remotecontrol;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import ru.sbt.mipt.oop.smarthome.remotecontrol.commands.Command;
 
 import java.util.*;
 

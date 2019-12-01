@@ -1,6 +1,7 @@
 package ru.sbt.mipt.oop.smarthome.remotecontrol.commands;
 
 import ru.sbt.mipt.oop.smarthome.SmartHome;
+import ru.sbt.mipt.oop.smarthome.remotecontrol.Command;
 import ru.sbt.mipt.oop.smarthome.scenarios.LightScenarios;
 
 public class TurnAllLightsOnCommand implements Command {
